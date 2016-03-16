@@ -23,7 +23,7 @@ window.addEventListener('load', function(){
       }
     }
   })
-  .rotar('frente', 3)
+  .rotar('frente', 5)
   .dibujarLineasVerticales('frente', {
     tipo: 'cuadricula',
     propiedades: {
