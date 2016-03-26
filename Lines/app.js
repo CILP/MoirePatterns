@@ -3,44 +3,27 @@
 var renderizer;
 
 function repaint(){
-  window.requestAnimationFrame(repaint);
+  // window.requestAnimationFrame(repaint);
 }
 
 window.addEventListener('load', function(){
-  renderizer = new Render()
-  .dibujarLineasVerticales('fondo', {
-    tipo: 'cuadricula',
-    propiedades: {
-      tamano: 4,
-      color: '#F2E',
-      puntoOrigen: {
-        x: 0,
-        y: 0
-      },
-      puntoDestino: {
-        x: 640,
-        y: 480
-      }
-    }
-  })
-  .rotar('frente', 5)
-  .dibujarLineasVerticales('frente', {
-    tipo: 'cuadricula',
-    propiedades: {
-      tamano: 4,
-      color: '#F2E',
-      puntoOrigen: {
-        x: 0,
-        y: 0
-      },
-      puntoDestino: {
-        x: 640,
-        y: 480
-      }
-    }
-  });
+  renderizer = new Render();
+  renderizer.canvas("fondo")
+            .origen({x:0, y:0})
+            .destino({x:640, y:480})
+            .color(null)
+            .tamano(4)
+            .dibujarLineasVerticales()
+            .renderizar();
 
-  repaint();
+  renderizer.canvas("frente")
+            .origen({x:0, y:0})
+            .destino({x:640, y:480})
+            .rotar(5)
+            .color(null)
+            .tamano(4)
+            .dibujarLineasVerticales()
+            .renderizar();
 }, false);
 
 document.onmouseup = function(e){
