@@ -59,7 +59,7 @@ Render.prototype.color = function(c){
 };
 
 /**
- * Metodo que setea el color de un trazo
+ * Metodo que setea el nombre del canvas destino
  * @method Render.canvas()
  * @param {string} l - Nombre del canvas destino
  */
@@ -191,15 +191,17 @@ Render.prototype.rotar = function(grados){
  * @method Render.limpiar()
  */
 Render.prototype.limpiar = function(){
-  if (!this._virtual){
+  /*if (!this._virtual){
     this._virtual = this.canvasVirtual();
     this._virtual.width = this._destino.x;
     this._virtual.height = this._destino.y;
-  }
+  }*/
 
-  var contexto = this._virtual.getContext('2d');
+  var canvas = document.getElementById(this._canvas);
+  var contexto = canvas.getContext('2d');
   contexto.clearRect(this._origen.x, this._origen.y, this._destino.x, this._destino.y);
 
+  canvas = null;
   contexto = null;
   return this;
 };
