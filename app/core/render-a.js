@@ -218,3 +218,30 @@ Render.prototype.limpiar = function(){
    this._virtual = null;
    this._tamano = null;
  };
+
+ /**
+  * Metodo que dibuja los elementos de una escena
+  * @method Render.reset()
+  * @param {scene} escena - Escena a dibujar
+  */
+  Render.prototype.dibujarEscena = function(scene){
+    if (scene){
+
+      if (!this._virtual){
+        this._virtual = this.canvasVirtual();
+        this._virtual.width = scene.meshs[0].size.width;
+        this._virtual.height = scene.meshs[0].size.height;
+      }
+
+      var contexto = this._virtual.getContext('2d');
+
+      contexto.fillStyle = scene.meshs[0].material.color;
+      contexto.fillRect(scene.meshs[0].origin.x,
+        scene.meshs[0].origin.y,
+        scene.meshs[0].destination.x,
+        scene.meshs[0].destination.y);
+
+      contexto = null;
+      return this;
+    }
+  };
